@@ -417,7 +417,15 @@ public enum ParticleEffect {
 	 * <li>The offset values have no influence on this particle effect
 	 * </ul>
 	 */
-	SWEEP_ATTACK("sweepAttack", 45, 9);
+	SWEEP_ATTACK("sweepAttack", 45, 9),
+	/**
+	 * A particle effect which is displayed by unstable sand and gravel:
+	 * <ul>
+	 * <li>It looks like a small dust cloud
+	 * <li>The offset values have no influence on this particle effect
+	 * </ul>
+	 */
+	FALLING_DUST("fallingdust", 46, 10, ParticleProperty.REQUIRES_DATA);
 
 	private static final Map<String, ParticleEffect> NAME_MAP = new HashMap<String, ParticleEffect>();
 	private static final Map<Integer, ParticleEffect> ID_MAP = new HashMap<Integer, ParticleEffect>();
@@ -566,7 +574,7 @@ public enum ParticleEffect {
 	 * @return Whether the data type is correct or not
 	 */
 	private static boolean isDataCorrect(ParticleEffect effect, ParticleData data) {
-		return ((effect == BLOCK_CRACK || effect == BLOCK_DUST) && data instanceof BlockData) || (effect == ITEM_CRACK && data instanceof ItemData);
+		return ((effect == BLOCK_CRACK || effect == BLOCK_DUST || effect == FALLING_DUST) && data instanceof BlockData) || (effect == ITEM_CRACK && data instanceof ItemData);
 	}
 
 	/**
